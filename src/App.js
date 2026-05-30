@@ -307,7 +307,7 @@ function App() {
               <div className="about-img-wrap">
                 <div className="about-img-bg"></div>
                 <div className="about-img-main">
-                  <img src="/img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" className="about-dr-img" />
+                  <img src="/img/dr3.png" alt="Dr. Jai Prakash Yadav" className="about-dr-img" />
                 </div>
                 <div className="exp-badge">
                   <strong>5+</strong>
