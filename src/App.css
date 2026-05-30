@@ -76,11 +76,12 @@ body {
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--primary);
+  color: var(--white);
   letter-spacing: -0.5px;
   background: none;
   border: none;
   user-select: none;
+  padding-bottom: 15px;
 }
 .logo i { font-size: 1.5rem; animation: spinSlow 10s linear infinite; }
 .logo.white { color: var(--white); }
@@ -226,6 +227,9 @@ body {
 .navbar.scrolled .nav-book { background: var(--primary); color: var(--white); }
 .navbar.scrolled .nav-book:hover { background: var(--primary-dark); }
 
+/* Close button hidden on desktop */
+.nav-close-li  { display: none; }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -258,6 +262,38 @@ body {
   flex-wrap: wrap;
 }
 
+/* ── Hero doctor left image ── */
+.hero-dr-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 380px;
+  height: 92%;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-dr-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 96%,
+    transparent 100%
+  );
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 96%,
+    transparent 100%
+  );
+  mask-composite: intersect;
+}
+
 /* Floating background icons */
 .hero-bg-icons { position: absolute; inset: 0; pointer-events: none; }
 .bg-icon { position: absolute; color: rgba(255,255,255,0.055); }
@@ -272,8 +308,9 @@ body {
 .hero-content {
   flex: 1;
   min-width: 300px;
-  max-width: 580px;
-  z-index: 1;
+  max-width: 560px;
+  z-index: 2;
+  margin-left: 260px;
 }
 .hero-badge {
   display: inline-flex;
@@ -312,9 +349,9 @@ body {
   margin-bottom: 36px;
   animation: fadeInUp 0.8s ease 0.4s both;
 }
-/* Doctor info block */
+/* Doctor info block — hidden on desktop (full image shown on left), shown on mobile */
 .hero-dr-block {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 16px;
   background: rgba(255,255,255,0.1);
@@ -327,11 +364,12 @@ body {
   max-width: 520px;
 }
 .hero-dr-img {
+  display: none;
   width: 58px;
   height: 58px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: top;
+  object-position: center top;
   border: 2px solid rgba(255,255,255,0.35);
   flex-shrink: 0;
 }
@@ -348,6 +386,21 @@ body {
   font-size: 0.84rem;
   color: rgba(255,255,255,0.72);
   line-height: 1.5;
+}
+.hero-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease 0.5s both;
+  line-height: 1.5;
+}
+.hero-address i {
+  color: var(--accent);
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 .hero-btns {
   display: flex;
@@ -595,28 +648,44 @@ body {
 .step-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 36px 24px;
+  padding: 0;
   text-align: center;
   border: 1px solid var(--border);
   position: relative;
   z-index: 1;
   transition: var(--trans);
+  overflow: hidden;
 }
 .step-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.step-num  { font-size: 3rem; font-weight: 900; color: var(--primary-light); line-height: 1; margin-bottom: 8px; }
-.step-icon {
-  width: 60px; height: 60px;
-  background: linear-gradient(135deg, var(--primary), #6366F1);
+.step-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.step-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.step-card:hover .step-img { transform: scale(1.07); }
+.step-num-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--primary);
   color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 800;
+  width: 32px; height: 32px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-  margin: 0 auto 16px;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 2px 8px rgba(37,99,235,0.4);
 }
-.step-card:hover .step-icon { transform: rotate(360deg) scale(1.1); }
-.step-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
-.step-card p  { font-size: 0.9rem; color: var(--mid); line-height: 1.65; }
+.step-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 16px 20px 8px; }
+.step-card p  { font-size: 0.9rem; color: var(--mid); line-height: 1.65; padding: 0 20px 24px; }
 
 
 /* ══════════════════════════════
@@ -875,6 +944,8 @@ body {
   .steps-grid::before { display: none; }
   .about-grid         { grid-template-columns: 1fr; gap: 48px; }
   .about-img-wrap     { width: 100%; max-width: 400px; margin: 0 auto; }
+  .hero-content       { margin-left: 200px; max-width: 520px; }
+  .hero-dr-left       { width: 300px; }
   .footer-grid        { grid-template-columns: 1fr 1fr; gap: 40px; }
   .brand-col          { grid-column: 1 / -1; }
 }
@@ -885,7 +956,7 @@ body {
   .container  { padding: 0 20px; }
 
   /* Navbar */
-  .hamburger  { display: flex; }
+  .hamburger  { display: flex; margin-left: auto; }
   .nav-book   { display: none; }
   .nav-menu {
     position: fixed;
@@ -903,6 +974,30 @@ body {
   }
   .nav-menu.open             { transform: translateX(0); }
   .nav-menu li button        { color: var(--dark2) !important; font-size: 1.15rem; padding: 12px 32px; }
+  .nav-close-li {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+  }
+  .nav-close-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--yellow) !important;
+    color: var(--white) !important;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0 !important;
+    transition: var(--trans);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .nav-close-btn:hover { background: var(--primary-dark) !important; }
   .navbar.scrolled .logo     { color: var(--primary); }
 
   /* Hero */
@@ -913,18 +1008,17 @@ body {
     gap: 40px;
     min-height: auto;
   }
-  .hero-content      { max-width: 100%; }
+  .hero-content      { max-width: 100%; margin-left: 0; }
   .hero-badge        { margin: 0 auto 18px; font-size: 0.82rem; }
-  .hero-dr-block     { margin: 0 auto 24px; max-width: 100%; }
-  .hero h1           { font-size: clamp(2.2rem, 7vw, 3rem); }
-  .hero-btns         { justify-content: center; flex-wrap: wrap; }
-  .hero-trust        { justify-content: center; }
-  .hero-visual       { width: 280px; height: 280px; }
-  .hero-card         { width: 140px; height: 140px; }
-  .hero-card-icon    { font-size: 3.2rem; }
-  .badge-1           { top: 2%; left: 0; font-size: 0.76rem; padding: 8px 12px; }
-  .badge-2           { bottom: 8%; right: 0; font-size: 0.76rem; padding: 8px 12px; }
-  .badge-3           { display: none; }
+  .hero-dr-left      { display: none; }
+  .hero-dr-block     { display: flex; margin: 0 auto 24px; max-width: 100%; }
+  .hero-dr-img       { display: block; width: 100px; height: 100px; border: 3px solid rgba(255,255,255,0.5); }
+  .hero h1           { font-size: clamp(2rem, 7vw, 3rem); }
+  .hero-address      { justify-content: center; font-size: 0.78rem; text-align: center; margin-bottom: 18px; }
+  .hero-btns         { justify-content: center; flex-wrap: wrap; gap: 12px; }
+  .hero-trust        { justify-content: center; flex-wrap: wrap; gap: 8px; }
+  .trust-sep         { display: none; }
+  .hero-visual       { display: none; }
   .scroll-down       { display: none; }
 
   /* Section heads */
@@ -962,15 +1056,14 @@ body {
 
 /* ── Large mobile (≤ 540px) ── */
 @media (max-width: 540px) {
-  .hero              { padding: 96px 16px 56px; }
-  .hero h1           { font-size: 2rem; letter-spacing: -0.5px; }
+  .hero              { padding: 90px 16px 48px; }
+  .hero h1           { font-size: 1.9rem; letter-spacing: -0.5px; }
   .hero-dr-block     { flex-direction: row; gap: 12px; padding: 12px 16px; }
-  .hero-dr-block strong { font-size: 1rem; }
-  .hero-dr-block span   { font-size: 0.78rem; }
-  .btn-primary, .btn-ghost { padding: 12px 22px; font-size: 0.92rem; }
-  .hero-visual       { width: 240px; height: 240px; }
-  .hero-card         { width: 120px; height: 120px; }
-  .hero-card-icon    { font-size: 2.8rem; }
+  .hero-dr-block strong { font-size: 0.95rem; }
+  .hero-dr-block span   { font-size: 0.75rem; }
+  .hero-address      { font-size: 0.74rem; }
+  .btn-primary, .btn-ghost { padding: 11px 18px; font-size: 0.88rem; width: 100%; justify-content: center; }
+  .hero-btns         { flex-direction: column; align-items: center; gap: 10px; }
   .steps-grid        { grid-template-columns: 1fr; gap: 16px; }
   .stats-grid        { grid-template-columns: repeat(2, 1fr); }
   .stat-value        { font-size: 2.2rem; }
@@ -986,7 +1079,7 @@ body {
   .container         { padding: 0 14px; }
   .hero h1           { font-size: 1.75rem; }
   .hero-dr-block     { padding: 10px 14px; gap: 10px; }
-  .hero-dr-img       { width: 44px; height: 44px; }
+  .hero-dr-img       { width: 80px; height: 80px; }
   .hero-dr-block strong { font-size: 0.92rem; }
   .hero-badge        { font-size: 0.76rem; padding: 5px 12px; }
   .stat-card         { padding: 24px 16px; }

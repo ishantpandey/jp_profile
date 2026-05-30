@@ -153,10 +153,10 @@ function App() {
   ];
 
   const steps = [
-    { num: '01', icon: 'fa-hands-praying',  title: 'Chiropractor Therapy', desc: 'Precise spinal and joint adjustments to correct misalignments, relieve nerve pressure and restore natural movement.' },
-    { num: '02', icon: 'fa-droplet',        title: 'Hijama / Dry Cupping', desc: 'Traditional cupping therapy to improve circulation, reduce inflammation and accelerate natural healing of deep tissue.' },
-    { num: '03', icon: 'fa-bolt',           title: 'Soft Laser Therapy',   desc: 'Low-level laser stimulation that promotes cellular repair, reduces swelling and relieves deep-seated chronic pain.' },
-    { num: '04', icon: 'fa-tape',           title: 'Taping & IASTM',       desc: 'Kinesiology taping and Instrument Assisted Soft Tissue Mobilisation to restore function and prevent re-injury.' },
+    { num: '01', img: '/img/chiro.jpg',  title: 'Chiropractor Therapy', desc: 'Precise spinal and joint adjustments to correct misalignments, relieve nerve pressure and restore natural movement.' },
+    { num: '02', img: '/img/hijama.jpg', title: 'Hijama / Dry Cupping', desc: 'Traditional cupping therapy to improve circulation, reduce inflammation and accelerate natural healing of deep tissue.' },
+    { num: '03', img: '/img/lager.jpg',  title: 'Soft Laser Therapy',   desc: 'Low-level laser stimulation that promotes cellular repair, reduces swelling and relieves deep-seated chronic pain.' },
+    { num: '04', img: '/img/taing.jpg',  title: 'Taping & IASTM',       desc: 'Kinesiology taping and Instrument Assisted Soft Tissue Mobilisation to restore function and prevent re-injury.' },
   ];
 
   const testimonials = [
@@ -166,7 +166,7 @@ function App() {
   ];
 
   const stats = [
-    { value: 10,   suffix: '+', label: 'Years Experience'  },
+    { value: 5,    suffix: '+', label: 'Years Experience'  },
     { value: 5000, suffix: '+', label: 'Patients Treated'  },
     { value: 97,   suffix: '%', label: 'Success Rate'      },
     { value: 5,    suffix: '',  label: 'Therapies Offered' },
@@ -191,6 +191,11 @@ function App() {
             <span>PhysioElite</span>
           </div>
           <ul className={`nav-menu ${menuOpen ? 'open' : ''}`}>
+            <li className="nav-close-li">
+              <button className="nav-close-btn" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </li>
             {navLinks.map(link => (
               <li key={link}>
                 <button
@@ -215,6 +220,11 @@ function App() {
           ))}
         </div>
 
+        {/* Doctor image — left side with bottom fade */}
+        <div className="hero-dr-left" aria-hidden="true">
+          <img src="/img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" />
+        </div>
+
         <div className="hero-content">
           <div className="hero-badge">
             <i className="fa-solid fa-hospital"></i> SV Physiotherapy &amp; Advance Pain Management Hub
@@ -224,11 +234,15 @@ function App() {
             Restore <span>Life</span>
           </h1>
           <div className="hero-dr-block">
-            <img src="/img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" className="hero-dr-img" />
+            <img src="/img/dr2.png" alt="Dr. Jai Prakash Yadav" className="hero-dr-img" />
             <div>
               <strong>Dr. Jai Prakash Yadav (PT)</strong>
               <span>Specialising in Paralysis · Cervical · Sciatica · Frozen Shoulder · Knee &amp; All Body Pain</span>
             </div>
+          </div>
+          <div className="hero-address">
+            <i className="fa-solid fa-building"></i>
+            Nallasopara East, Gala No. 6, Square One Chawl, Avadhoot Ashram Road, Nr. Green Hills Resort — 401209 &nbsp;|&nbsp; +91 88585 02455
           </div>
           <div className="hero-btns">
             <button className="btn-primary" onClick={() => scrollTo('contact')}>
@@ -241,7 +255,7 @@ function App() {
           <div className="hero-trust">
             <div className="hero-stars">
               {[...Array(5)].map((_, i) => <i key={i} className="fa-solid fa-star"></i>)}
-              <span>4.9 / 5 Rating</span>
+              <span>4.8 / 5 Rating</span>
             </div>
             <span className="trust-sep">|</span>
             <div className="trust-text"><i className="fa-solid fa-users"></i> 5,000+ Happy Patients</div>
@@ -296,7 +310,7 @@ function App() {
                   <img src="/img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" className="about-dr-img" />
                 </div>
                 <div className="exp-badge">
-                  <strong>10+</strong>
+                  <strong>5+</strong>
                   <span>Years of Excellence</span>
                 </div>
               </div>
@@ -333,8 +347,10 @@ function App() {
           <div className="steps-grid">
             {steps.map((step, i) => (
               <div key={i} className="step-card fade-up" style={{ '--delay': `${i * 0.12}s` }}>
-                <div className="step-num">{step.num}</div>
-                <div className="step-icon"><i className={`fa-solid ${step.icon}`}></i></div>
+                <div className="step-img-wrap">
+                  <img src={step.img} alt={step.title} className="step-img" />
+                  <span className="step-num-badge">{step.num}</span>
+                </div>
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
               </div>
