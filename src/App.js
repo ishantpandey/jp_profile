@@ -222,7 +222,7 @@ function App() {
 
         {/* Doctor image — left side with bottom fade */}
         <div className="hero-dr-left" aria-hidden="true">
-          <img src="/img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" />
+          <img src="./img/drjpyadav.png" alt="Dr. Jai Prakash Yadav" />
         </div>
 
         <div className="hero-content">
@@ -234,7 +234,7 @@ function App() {
             Restore <span>Life</span>
           </h1>
           <div className="hero-dr-block">
-            <img src="/img/dr2.png" alt="Dr. Jai Prakash Yadav" className="hero-dr-img" />
+            <img src="./img/dr2.png" alt="Dr. Jai Prakash Yadav" className="hero-dr-img" />
             <div>
               <strong>Dr. Jai Prakash Yadav (PT)</strong>
               <span>Specialising in Paralysis · Cervical · Sciatica · Frozen Shoulder · Knee &amp; All Body Pain</span>
