@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/jp_profile/static/css/main.07089051.css",
-    "main.js": "/jp_profile/static/js/main.0c563ccb.js",
+    "main.js": "/jp_profile/static/js/main.b8280785.js",
     "static/media/jess-bailey-94Ld_MtIUf0-unsplash.jpg": "/jp_profile/static/media/jess-bailey-94Ld_MtIUf0-unsplash.b923b1c0315d79685fdc.jpg",
     "index.html": "/jp_profile/index.html",
     "main.07089051.css.map": "/jp_profile/static/css/main.07089051.css.map",
-    "main.0c563ccb.js.map": "/jp_profile/static/js/main.0c563ccb.js.map"
+    "main.b8280785.js.map": "/jp_profile/static/js/main.b8280785.js.map"
   },
   "entrypoints": [
     "static/css/main.07089051.css",
-    "static/js/main.0c563ccb.js"
+    "static/js/main.b8280785.js"
   ]
 }
