@@ -153,10 +153,10 @@ function App() {
   ];
 
   const steps = [
-    { num: '01', img: '/img/chiro.jpg',  title: 'Chiropractor Therapy', desc: 'Precise spinal and joint adjustments to correct misalignments, relieve nerve pressure and restore natural movement.' },
-    { num: '02', img: '/img/hijama.jpg', title: 'Hijama / Dry Cupping', desc: 'Traditional cupping therapy to improve circulation, reduce inflammation and accelerate natural healing of deep tissue.' },
-    { num: '03', img: '/img/lager.jpg',  title: 'Soft Laser Therapy',   desc: 'Low-level laser stimulation that promotes cellular repair, reduces swelling and relieves deep-seated chronic pain.' },
-    { num: '04', img: '/img/taing.jpg',  title: 'Taping & IASTM',       desc: 'Kinesiology taping and Instrument Assisted Soft Tissue Mobilisation to restore function and prevent re-injury.' },
+    { num: '01', img: './img/chiro.jpg',  title: 'Chiropractor Therapy', desc: 'Precise spinal and joint adjustments to correct misalignments, relieve nerve pressure and restore natural movement.' },
+    { num: '02', img: './img/hijama.jpg', title: 'Hijama / Dry Cupping', desc: 'Traditional cupping therapy to improve circulation, reduce inflammation and accelerate natural healing of deep tissue.' },
+    { num: '03', img: './img/lager.jpg',  title: 'Soft Laser Therapy',   desc: 'Low-level laser stimulation that promotes cellular repair, reduces swelling and relieves deep-seated chronic pain.' },
+    { num: '04', img: './img/taing.jpg',  title: 'Taping & IASTM',       desc: 'Kinesiology taping and Instrument Assisted Soft Tissue Mobilisation to restore function and prevent re-injury.' },
   ];
 
   const testimonials = [
@@ -307,7 +307,7 @@ function App() {
               <div className="about-img-wrap">
                 <div className="about-img-bg"></div>
                 <div className="about-img-main">
-                  <img src="/img/dr3.png" alt="Dr. Jai Prakash Yadav" className="about-dr-img" />
+                  <img src="./img/dr3.png" alt="Dr. Jai Prakash Yadav" className="about-dr-img" />
                 </div>
                 <div className="exp-badge">
                   <strong>5+</strong>
